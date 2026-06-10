@@ -9,7 +9,6 @@ const SERVICES = [
     name: "Women's Hair & Color",
     desc: "Balayage, highlights, cuts & full-color transformations by our master colorists.",
     items: ['Haircut & Blowout', 'Balayage & Ombré', 'Full Color & Highlights', 'Keratin Treatment'],
-    price: '$65',
     bookVal: 'womens-hair',
   },
   {
@@ -20,7 +19,6 @@ const SERVICES = [
     name: "Men's Cut & Grooming",
     desc: "Precision cuts, fades & classic barbering elevated to a luxury experience.",
     items: ['Precision Haircut', 'Skin Fade & Taper', 'Classic Hot Towel Shave', 'Hair & Scalp Treatment'],
-    price: '$45',
     bookVal: 'mens-cut',
   },
   {
@@ -31,7 +29,6 @@ const SERVICES = [
     name: 'Beard & Shave',
     desc: 'Expert beard sculpting, shaping & luxury hot-towel shave services.',
     items: ['Beard Sculpt & Shape', 'Straight Razor Shave', 'Beard Conditioning', 'Line-Up & Define'],
-    price: '$40',
     bookVal: 'beard',
   },
   {
@@ -42,7 +39,6 @@ const SERVICES = [
     name: 'Skin & Facials',
     desc: 'Clinical-grade facials & skincare regimens designed for all skin types — men and women.',
     items: ['Signature Glow Facial', "Men's Deep Cleanse Facial", 'Chemical Peel', 'LED Light Therapy'],
-    price: '$90',
     bookVal: 'skin',
   },
   {
@@ -53,7 +49,6 @@ const SERVICES = [
     name: 'Bridal & Events',
     desc: 'Complete wedding-day packages for the whole party — bride, groom & everyone in between.',
     items: ['Bridal Hair & Makeup', "Groom's Cut & Groom", 'Bridal Party Packages', 'Trial Sessions'],
-    price: '$250',
     bookVal: 'bridal',
   },
   {
@@ -65,7 +60,6 @@ const SERVICES = [
     name: 'VIP Full Day',
     desc: 'The ultimate package for him or her — every service, champagne & total relaxation.',
     items: ['Full Hair Service', 'Facial + Head Massage', 'Manicure & Pedicure', 'Champagne & Refreshments'],
-    price: '$450',
     bookVal: 'vip',
     isVip: true,
     vipLabel: 'Book VIP',
@@ -173,7 +167,6 @@ export default function Services() {
                   ))}
                 </ul>
                 <div className="svc-footer">
-                  <span className="svc-price">From <strong>${s.price.replace('$','')}</strong></span>
                   <a
                     href="#booking"
                     className="btn btn-gold-sm"

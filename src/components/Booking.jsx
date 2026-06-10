@@ -121,8 +121,8 @@ export default function Booking({ onToast }) {
     <section id="booking" className="booking-section" aria-labelledby="booking-title" ref={ref}>
       <div className="booking-bg" aria-hidden="true"></div>
       <div className="container">
-        <div className="booking-card reveal">
-          <div className="booking-left">
+        <div className="booking-card">
+          <div className="booking-left reveal">
             <p className="eyebrow eyebrow--light">Ready for Your Look?</p>
             <h2 id="booking-title" className="sec-title sec-title--white">
               Book Your<br /><em>Session Today</em>

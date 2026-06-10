@@ -10,6 +10,7 @@ export default function Preloader() {
     document.body.style.overflow = 'hidden';
 
     const hide = () => {
+      el.style.pointerEvents = 'none';
       el.classList.add('out');
       document.body.style.overflow = '';
       const cleanup = () => el.remove();
