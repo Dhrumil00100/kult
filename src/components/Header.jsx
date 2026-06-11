@@ -54,15 +54,15 @@ export default function Header() {
 
   const navLinks = [
     { href: '#services', label: 'Services' },
-    { href: '#about',    label: 'About'    },
-    { href: '#team',     label: 'Team'     },
-    { href: '#gallery',  label: 'Gallery'  },
+    { href: '#about', label: 'About' },
+    { href: '#team', label: 'Team' },
+    { href: '#gallery', label: 'Gallery' },
     { href: '#testimonials', label: 'Reviews' },
-    { href: '#faq',      label: 'FAQ'      },
-    { href: '#contact',  label: 'Contact'  },
+    { href: '#faq', label: 'FAQ' },
+    { href: '#contact', label: 'Contact' },
   ];
 
-  const mobIcons = ['fa-cut','fa-heart','fa-users','fa-images','fa-star','fa-question-circle','fa-map-marker-alt'];
+  const mobIcons = ['fa-cut', 'fa-heart', 'fa-users', 'fa-images', 'fa-star', 'fa-question-circle', 'fa-map-marker-alt'];
 
   return (
     <header id="site-header" className={scrolled ? 'scrolled' : ''} role="banner">
@@ -86,23 +86,7 @@ export default function Header() {
           ))}
         </ul>
 
-        <div className="nav-right">
-          <a href="tel:+15551234567" className="nav-phone" aria-label="Call us">
-            <i className="fas fa-phone-alt" aria-hidden="true"></i>
-            <span>(555) 123-4567</span>
-          </a>
-          <a href="#booking" className="btn btn-gold nav-book" onClick={e => smoothScroll(e, '#booking')}>Book Now</a>
-          <button
-            className={`hamburger${menuOpen ? ' open' : ''}`}
-            id="hamburger"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-nav"
-            onClick={() => setMenuOpen(o => !o)}
-          >
-            <span></span><span></span><span></span>
-          </button>
-        </div>
+
       </nav>
 
       {/* Mobile Nav */}
