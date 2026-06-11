@@ -40,14 +40,15 @@ export default function Contact() {
               <div className="cinfo-icon"><i className="fas fa-clock" aria-hidden="true"></i></div>
               <div>
                 <h3>Opening Hours</h3>
-                <p>Mon – Fri: 9:00 AM – 7:00 PM<br />Saturday: 8:00 AM – 6:00 PM<br />Sunday: 10:00 AM – 4:00 PM</p>
+                <p>Monday : 9:00 AM – 9:00 PM<br/>Wednesday : 9 :00am –9 pm<br/>Thursday : 9 am–9 pm<br/>Friday : 9 am–9 pm
+                <br />Saturday: 9:00 AM – 9:00 PM<br />Sunday: 9:00 AM – 6:00 PM</p>
               </div>
             </div>
             <div className="cinfo-item">
               <div className="cinfo-icon"><i className="fas fa-phone-alt" aria-hidden="true"></i></div>
               <div>
                 <h3>Phone</h3>
-                <a href="tel:+15551234567" className="cinfo-link">+1 (555) 123-4567</a>
+                <a href="tel:9714790099" className="cinfo-link">+91 9714790099</a>
               </div>
             </div>
             <div className="cinfo-item">
@@ -74,10 +75,10 @@ export default function Contact() {
                 <i className="fas fa-map-marker-alt"></i>
                 <div className="map-ripple"></div>
               </div>
-              <h3>45 Elegance Avenue</h3>
-              <p>New York, NY 10001</p>
+              <h3>104-105 A,Radhe Kishan Villa Complex</h3>
+              <p>Ahmedabad, Gujarat 382443</p>
               <a
-                href="https://maps.google.com/?q=45+Elegance+Avenue+New+York+NY"
+                href="https://maps.app.goo.gl/1fMtVE7uewhVkYJL9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-gold"
