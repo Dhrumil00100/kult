@@ -33,7 +33,7 @@ export default function Contact() {
               <div className="cinfo-icon"><i className="fas fa-map-marker-alt" aria-hidden="true"></i></div>
               <div>
                 <h3>Our Location</h3>
-                <p>45 Elegance Avenue, Suite 100<br />New York, NY 10001</p>
+                <p>104-105 A,Radhe Kishan Villa Complex<br /> opposite Topaz Restaurant, Isanpur, Ahmedabad, Gujarat 382443</p>
               </div>
             </div>
             <div className="cinfo-item">
