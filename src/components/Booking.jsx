@@ -2,11 +2,11 @@ import { useState, useRef, useEffect } from 'react';
 
 const SVC_LABELS = {
   'womens-hair': "Women's Hair & Color",
-  'mens-cut':    "Men's Cut & Grooming",
-  'beard':       'Beard & Shave',
-  'skin':        'Skin & Facials',
-  'bridal':      'Bridal Package',
-  'vip':         'VIP Full Day',
+  'mens-cut': "Men's Cut & Grooming",
+  'beard': 'Beard & Shave',
+  'skin': 'Skin & Facials',
+  'bridal': 'Bridal Package',
+  'vip': 'VIP Full Day',
 };
 
 const SERVICE_GROUPS = [
@@ -39,10 +39,11 @@ const TIME_OPTIONS = [
 ].map(t => ({ value: t, label: t }));
 
 export default function Booking({ onToast }) {
-  const [fields, setFields] = useState({ name:'', email:'', phone:'', service:'', date:'', time:'', notes:'' });
+  const [fields, setFields] = useState({ name: '', email: '', phone: '', service: '', date: '', time: '', notes: '' });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
   const ref = useRef(null);
 
   const today = new Date().toISOString().split('T')[0];
@@ -66,18 +67,18 @@ export default function Booking({ onToast }) {
 
   const validate = () => {
     const errs = {};
-    if (!fields.name.trim())  errs.name    = 'Please enter your full name.';
+    if (!fields.name.trim()) errs.name = 'Please enter your full name.';
     if (!fields.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim()))
-      errs.email   = 'Please enter a valid email address.';
-    if (!fields.service)      errs.service = 'Please select a service.';
-    if (!fields.date)         errs.date    = 'Please select a preferred date.';
+      errs.email = 'Please enter a valid email address.';
+    if (!fields.service) errs.service = 'Please select a service.';
+    if (!fields.date) errs.date = 'Please select a preferred date.';
     return errs;
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFields(f => ({ ...f, [name]: value }));
-    if (errors[name]) setErrors(er => { const n = {...er}; delete n[name]; return n; });
+    if (errors[name]) setErrors(er => { const n = { ...er }; delete n[name]; return n; });
   };
 
   const handleSubmit = (e) => {
@@ -85,6 +86,14 @@ export default function Booking({ onToast }) {
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
 
+    // WhatsApp redirect
+    const wppMessage = `Hello KULT’s Salon,\n\nI would like to book the following appointment:\n\nService: ${fields.service}\nBooking Type: ${fields.eventType || 'Normal Salon Visit'}\nDate: ${fields.date || 'TBD'}\nTime: ${fields.time || 'TBD'}\n\nName: ${fields.name}\nPhone: ${fields.phone}\nMessage: ${fields.notes || 'None'}`;
+    const encodedMessage = encodeURIComponent(wppMessage);
+    const wppUrl = `https://wa.me/919714790099?text=${encodedMessage}`;
+    window.open(wppUrl, '_blank');
+    setSubmitted(true);
+
+    // Original submission logic
     setSubmitting(true);
     const data = {
       id: `LM-${Date.now()}`,
@@ -95,14 +104,13 @@ export default function Booking({ onToast }) {
       const prev = JSON.parse(localStorage.getItem('kult_bookings') || '[]');
       prev.push(data);
       localStorage.setItem('kult_bookings', JSON.stringify(prev));
-    } catch (_) {}
-
+    } catch (_) { }
     setTimeout(() => {
       setSubmitting(false);
       const svcLabel = SVC_LABELS[data.service] || data.service;
       const firstName = data.name.split(' ')[0];
       const dateStr = data.date
-        ? new Date(data.date + 'T12:00').toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' })
+        ? new Date(data.date + 'T12:00').toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
         : '';
       setSuccess({ firstName, svcLabel, dateStr });
       onToast('✨ Appointment requested! We\'ll be in touch soon.');
@@ -132,7 +140,7 @@ export default function Booking({ onToast }) {
               15-min consultation — for him, her, or anyone.
             </p>
             <ul className="booking-perks">
-              {['Services for men & women','Free cancellation up to 24hrs','Choose your preferred stylist','Instant confirmation sent'].map(p => (
+              {['Services for men & women', 'Free cancellation up to 24hrs', 'Choose your preferred stylist', 'Instant confirmation sent'].map(p => (
                 <li key={p}><i className="fas fa-check-circle" aria-hidden="true"></i> {p}</li>
               ))}
             </ul>
@@ -148,8 +156,8 @@ export default function Booking({ onToast }) {
                 <div className="bk-success-icon"><i className="fas fa-check-circle" aria-hidden="true"></i></div>
                 <h3>You're all set, {success.firstName}! ✨</h3>
                 <p>Your request for <strong>{success.svcLabel}</strong>{success.dateStr ? ` on <strong>${success.dateStr}</strong>` : ''} has been received.</p>
-                <p style={{ marginTop:'.5rem', opacity:.7 }}>We'll be in touch within 24 hours to confirm. See you soon!</p>
-                <a href="#services" className="btn btn-gold" style={{ marginTop:'1.2rem' }} onClick={e => smoothScroll(e, '#services')}>
+                <p style={{ marginTop: '.5rem', opacity: .7 }}>We'll be in touch within 24 hours to confirm. See you soon!</p>
+                <a href="#services" className="btn btn-gold" style={{ marginTop: '1.2rem' }} onClick={e => smoothScroll(e, '#services')}>
                   Explore More Services
                 </a>
               </div>
